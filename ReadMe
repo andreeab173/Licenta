@@ -1,0 +1,66 @@
+
+Licență - Parcare Privată Inteligentă
+
+Acest proiect reprezintă aplicația dezvoltată pentru lucrarea de licență, având ca scop gestionarea automată a accesului într-o parcare privată prin recunoașterea automată a numerelor de înmatriculare utilizând YOLO și OCR, cu integrare hardware folosind Arduino.
+
+-----------------------------
+Pași de instalare
+
+1. Clonează repository-ul:
+git clone https://github.com/andreeab173/Licenta.git
+
+2. Intră în folderul proiectului:
+cd Licenta
+
+3. Instalează dependințele Python necesare:
+pip install -r requirements.txt
+
+(requirements.txt conține pachete precum YOLO, Flask, Tesseract etc.)
+
+4. Asigură-te că ai instalat:
+- Python 3.10+
+- Arduino IDE
+- Tesseract OCR configurat în PATH
+- YOLOv8 cu modelul antrenat salvat la best.pt
+
+-----------------------------
+Pași de compilare
+
+Proiectul Python nu necesită compilare tradițională, ci se rulează direct cu:
+python camera_live_cu_arduino.py
+python camera_live_cu_arduino_cu_aproximitate.py pentru programul cu aproximitate peste 85%
+
+
+
+Pentru partea Arduino:
+1. Deschide Arduino IDE.
+2. Încarcă fișierul .ino aferent proiectului.
+3. Selectează placa și portul corect.
+4. Apasă Upload.
+
+-----------------------------
+Pași de lansare a aplicației
+
+1. Conectează Arduino la laptop/PC precum și camera, dacă nu se va folosi cea integrată la laptop/PC.
+
+2. Rulează serverul Flask și YOLO:
+python camera_plus_web.py
+python app.py
+
+3. Accesează interfața web:
+http://localhost:5000 
+sau
+https://parcare-andreea-gfevcue8e6ayfsba.centralus-01.azurewebsites.net/login
+conectează-te cu datele setate iar mai apoi vei vedea interfața.
+
+4. Sistemul va:
+- Deschide camera live pentru detecția numerelor.
+- Recunoaște numerele cu YOLO și OCR.
+- Ridica automat bariera pentru numerele permise.
+- Salva istoricul intrărilor/ieșirilor în baza de date.
+- Permite gestionarea numerelor din interfața web.
+
+-----------------------------
+🤝 Contact
+
+Andreea Bartic. - barticalex@yahoo.com
