@@ -52,6 +52,7 @@ http://localhost:5000
 sau
 https://parcare-andreea-gfevcue8e6ayfsba.centralus-01.azurewebsites.net/login
 conectează-te cu datele setate iar mai apoi vei vedea interfața.
+Sau pentru a crea o noua interfață web pe cloud azure e nevoie de a face deploy la folder pe visual studio code.
 
 4. Sistemul va:
 - Deschide camera live pentru detecția numerelor.
