@@ -1,0 +1,5 @@
+train: C:/Users/barti/OneDrive/Desktop/IncercareLicenta/dataset/images/train
+val: C:/Users/barti/OneDrive/Desktop/IncercareLicenta/dataset/images/val
+
+nc: 1
+names: ["nrinm"]

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistem Parcare - Administrare</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #ecf0f1;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #2c3e50;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #7f8c8d;
+        }
+
+        input, button {
+            margin-top: 10px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #34495e;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        li button {
+            background-color: #e74c3c;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        li button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sistem Parcare - Administrare</h2>
+
+        <form action="/add" method="post">
+            <input type="text" name="number" placeholder="Adaugă număr" required>
+            <button type="submit">Adaugă</button>
+        </form>
+
+        <h3>Numere ce doresc acces ulterior</h3>
+        <ul>
+            {% for number in frecvente %}
+            <li>
+                {{ number }}
+                <form action="/delete/{{ number }}" method="post" style="display:inline;">
+                    <button type="submit">Șterge</button>
+                </form>
+            </li>
+            {% else %}
+            <li>Niciun număr adăugat.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Numerele detectate de camera</h3>
+        <table>
+            <tr>
+                <th>Număr</th>
+                <th>Data și ora intrării</th>
+                <th>Acțiuni</th>
+            </tr>
+            {% for numar, timp in nefrecvente.items() %}
+            <tr>
+                <td>{{ numar }}</td>
+                <td>{{ timp.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>
+                    <form action="/delete/{{ numar }}" method="get">
+                        <button type="submit">Șterge</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="3">Niciun număr detectat recent.</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

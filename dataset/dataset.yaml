@@ -1,0 +1,6 @@
+path: "C:/Users/barti/OneDrive/Desktop/LicentaParcare/dataset"
+train: images/train  
+val: images/val  
+
+nc: 1  # <-- numărul de clase (schimbă dacă ai mai multe clase)  
+names: ["nrinm"]  # <-- lista cu numele claselor tale
